@@ -16,32 +16,32 @@ import { EtherealEffect } from '@/components/ui/EtherealEffect';
 const topPools = [
   {
     id: 'eth-usdt',
-    token0: { symbol: 'ETH', logoURI: '/eth-logo.png' },
-    token1: { symbol: 'USDT', logoURI: '/usdt-logo.png' },
+    token0: { symbol: 'ETH', logoURI: '/token-logos/eth.png' },
+    token1: { symbol: 'USDT', logoURI: '/token-logos/usdt.png' },
     tvl: '$1,245,678',
     volume24h: '$345,890',
     apr: '12.4%',
   },
   {
     id: 'eth-usdc',
-    token0: { symbol: 'ETH', logoURI: '/eth-logo.png' },
-    token1: { symbol: 'USDC', logoURI: '/usdc-logo.png' },
+    token0: { symbol: 'ETH', logoURI: '/token-logos/eth.png' },
+    token1: { symbol: 'USDC', logoURI: '/token-logos/usdc.png' },
     tvl: '$978,456',
     volume24h: '$289,765',
     apr: '10.8%',
   },
   {
     id: 'eth-wbtc',
-    token0: { symbol: 'ETH', logoURI: '/eth-logo.png' },
-    token1: { symbol: 'WBTC', logoURI: '/wbtc-logo.png' },
+    token0: { symbol: 'ETH', logoURI: '/token-logos/eth.png' },
+    token1: { symbol: 'WBTC', logoURI: '/token-logos/wbtc.png' },
     tvl: '$876,543',
     volume24h: '$187,654',
     apr: '9.7%',
   },
   {
     id: 'usdt-usdc',
-    token0: { symbol: 'USDT', logoURI: '/usdt-logo.png' },
-    token1: { symbol: 'USDC', logoURI: '/usdc-logo.png' },
+    token0: { symbol: 'USDT', logoURI: '/token-logos/usdt.png' },
+    token1: { symbol: 'USDC', logoURI: '/token-logos/usdc.png' },
     tvl: '$543,210',
     volume24h: '$98,765',
     apr: '6.5%',
@@ -100,38 +100,46 @@ export default function Home() {
                 </div>
               </div>
               
-              {/* Table header */}
-              <div className="grid grid-cols-12 gap-4 px-6 py-3 text-sm font-medium text-gray-400 bg-background-light/30">
+              {/* Table header - Responsive grid with smaller text on mobile */}
+              <div className="hidden md:grid md:grid-cols-12 gap-4 px-6 py-3 text-sm font-medium text-gray-400 bg-background-light/30">
                 <div className="col-span-4">Pool</div>
                 <div className="col-span-3 text-right">TVL</div>
                 <div className="col-span-3 text-right">Volume (24h)</div>
                 <div className="col-span-2 text-right">APR</div>
               </div>
               
-              {/* Table content */}
+              {/* Mobile-specific header */}
+              <div className="md:hidden grid grid-cols-12 gap-1 px-3 py-3 text-[10px] font-medium text-gray-400 bg-background-light/30">
+                <div className="col-span-4">Pool</div>
+                <div className="col-span-3 text-right">TVL</div>
+                <div className="col-span-3 text-right">Vol</div>
+                <div className="col-span-2 text-right">APR</div>
+              </div>
+              
+              {/* Table content - with responsive styling */}
               <div className="max-h-[320px] overflow-hidden">
                 {topPools.map((pool) => (
                   <Link 
                     key={pool.id} 
                     href={`/swap?fromToken=${pool.token0.symbol}&toToken=${pool.token1.symbol}`}
-                    className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-border/20 hover:bg-primary/5 transition-colors block cursor-pointer text-gray-200"
+                    className="grid grid-cols-12 gap-1 md:gap-4 px-3 md:px-6 py-3 border-b border-border/20 hover:bg-primary/5 transition-colors block cursor-pointer text-gray-200"
                   >
-                    <div className="col-span-4">
+                    <div className="col-span-4 md:col-span-4 pr-1">
                       <div className="flex items-center">
-                        <div className="flex -space-x-2 mr-3">
+                        <div className="flex -space-x-1 mr-1 md:mr-3 flex-shrink-0">
                           <div className="token-logo z-10">
-                            <img src={pool.token0.logoURI} alt={pool.token0.symbol} className="w-6 h-6" />
+                            <img src={pool.token0.logoURI} alt={pool.token0.symbol} className="w-6 h-6 md:w-6 md:h-6" />
                           </div>
                           <div className="token-logo">
-                            <img src={pool.token1.logoURI} alt={pool.token1.symbol} className="w-6 h-6" />
+                            <img src={pool.token1.logoURI} alt={pool.token1.symbol} className="w-6 h-6 md:w-6 md:h-6" />
                           </div>
                         </div>
-                        <span className="font-medium">{pool.token0.symbol}/{pool.token1.symbol}</span>
+                        <span className="font-medium text-[10px] md:text-base truncate">{pool.token0.symbol}/{pool.token1.symbol}</span>
                       </div>
                     </div>
-                    <div className="col-span-3 text-right">{pool.tvl}</div>
-                    <div className="col-span-3 text-right">{pool.volume24h}</div>
-                    <div className="col-span-2 text-right font-medium text-primary">{pool.apr}</div>
+                    <div className="col-span-3 text-right text-[10px] md:text-base whitespace-nowrap">{pool.tvl}</div>
+                    <div className="col-span-3 md:col-span-3 text-right text-[10px] md:text-base whitespace-nowrap">{pool.volume24h}</div>
+                    <div className="col-span-2 text-right font-medium text-primary text-[10px] md:text-base">{pool.apr}</div>
                   </Link>
                 ))}
               </div>

@@ -20,21 +20,21 @@ const MEGAETH_TOKENS: Token[] = [
     symbol: 'ETH',
     name: 'Ethereum',
     decimals: 18,
-    logoURI: '/token-icons/eth.png'
+    logoURI: '/token-logos/eth.png'
   },
   {
     address: WETH9_ADDRESS,
     symbol: 'WETH',
     name: 'Wrapped Ethereum',
     decimals: 18,
-    logoURI: '/token-icons/weth.png'
+    logoURI: '/token-logos/eth.png' // Using ETH logo for WETH
   },
   {
     address: ZAP_TOKEN_ADDRESS,
     symbol: 'ZAP',
     name: 'ZapSwap Token',
     decimals: 18,
-    logoURI: '/token-icons/zap.png'
+    logoURI: '/logo.png' // Using ZapSwap logo for ZAP token
   }
 ];
 
