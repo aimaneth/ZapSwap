@@ -1,0 +1,296 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 98%;
+    
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 66 94% 52%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 66 94% 42%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
+    
+    --accent: 66 94% 62%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 358 100% 48%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 66 94% 52%;
+    
+    --radius: 0.75rem;
+
+    /* Custom ZapSwap colors */
+    --color-primary: 66, 94%, 52%; /* #d1f019 - Lime Yellow-Green */
+    --color-secondary: 66, 94%, 42%; /* Darker Lime Yellow-Green */
+    --color-accent: 66, 94%, 62%; /* Lighter Lime Yellow-Green */
+    --color-background: 0, 0%, 5%; /* True Black */
+    --color-background-light: 0, 0%, 7%; /* Dark */
+    --color-card: 0, 0%, 7%; /* Card Background */
+    --color-border: 0, 0%, 15%; /* Border Color */
+    --color-text-primary: 0, 0%, 98%; /* White */
+    --color-text-secondary: 0, 0%, 65%; /* Light Gray */
+  }
+  
+  .light {
+    --background: 66 15% 98%;
+    --foreground: 66 10% 10%;
+    
+    --card: 66 15% 99%;
+    --card-foreground: 66 10% 10%;
+    
+    --popover: 66 15% 99%;
+    --popover-foreground: 66 10% 10%;
+    
+    --primary: 66 94% 52%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 66 85% 65%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 66 15% 95%;
+    --muted-foreground: 66 10% 45%;
+    
+    --accent: 66 90% 70%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 358 100% 48%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 66 20% 90%;
+    --input: 66 20% 90%;
+    --ring: 66 94% 52%;
+
+    /* Custom ZapSwap colors for light mode */
+    --color-background: 66, 15%, 98%;
+    --color-background-light: 66, 15%, 99%;
+    --color-card: 66, 15%, 99%;
+    --color-border: 66, 20%, 90%;
+    --color-text-primary: 66, 10%, 10%;
+    --color-text-secondary: 66, 10%, 45%;
+  }
+  
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-background text-foreground min-h-screen;
+    background-image: none;
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+  
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--color-background-light) / 0.5);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--color-primary) / 0.5);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--color-primary) / 0.7);
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply px-4 py-2 rounded-xl font-medium transition-all;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-secondary text-white shadow-glow-sm hover:shadow-glow-md active:translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply bg-gradient-to-r from-secondary to-accent text-white shadow-glow-sm hover:shadow-glow-md active:translate-y-0.5;
+  }
+  
+  .btn-outline {
+    @apply border border-border bg-transparent hover:border-primary/50 hover:bg-primary/10 text-foreground;
+  }
+  
+  .btn-connect {
+    @apply bg-gradient-to-r from-primary to-secondary rounded-xl px-4 py-2 text-white font-medium hover:shadow-glow-md transition-all;
+  }
+  
+  /* Cards */
+  .card-custom {
+    @apply bg-card rounded-2xl border border-border shadow-md backdrop-blur-sm;
+  }
+  
+  .card-glass {
+    @apply bg-card/80 backdrop-blur-md rounded-2xl border border-border/50 shadow-lg;
+  }
+  
+  /* Inputs */
+  .input-custom {
+    @apply w-full px-4 py-3 rounded-xl bg-background-light border border-border text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-primary/50 focus:border-transparent outline-none transition-colors;
+  }
+  
+  /* Token Selector */
+  .token-selector {
+    @apply flex items-center gap-2 px-3 py-2 rounded-full bg-background-light/80 hover:bg-primary/10 border border-border/40 transition-all cursor-pointer backdrop-blur-xs;
+  }
+  
+  /* Swap Container */
+  .swap-container {
+    @apply bg-card/80 backdrop-blur-md p-4 md:p-6 max-w-md w-full mx-auto rounded-3xl;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .swap-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: 1.5rem;
+    background: rgb(209, 240, 25);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: rotateBorder 8s linear infinite;
+    z-index: -1;
+    opacity: 0.7;
+  }
+  
+  @keyframes rotateBorder {
+    0% {
+      background: conic-gradient(
+        from 0deg at 50% 50%,
+        rgba(209, 240, 25, 0.8),
+        rgba(209, 240, 25, 0.3),
+        rgba(209, 240, 25, 0.8)
+      );
+    }
+    100% {
+      background: conic-gradient(
+        from 360deg at 50% 50%,
+        rgba(209, 240, 25, 0.8),
+        rgba(209, 240, 25, 0.3),
+        rgba(209, 240, 25, 0.8)
+      );
+    }
+  }
+  
+  /* Token Amount Input */
+  .token-amount-input {
+    @apply bg-transparent text-2xl outline-none placeholder:text-muted-foreground/50 font-medium;
+    width: 100%;
+    display: block;
+    text-align: left;
+  }
+  
+  /* Swap Button */
+  .swap-button {
+    @apply btn-primary w-full py-3 text-lg font-semibold rounded-2xl;
+  }
+  
+  /* Token Logo */
+  .token-logo {
+    @apply w-8 h-8 rounded-full bg-background flex items-center justify-center overflow-hidden ring-2 ring-border/50 shadow-sm;
+  }
+  
+  /* Network Badge */
+  .network-badge {
+    @apply px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-secondary/20 to-accent/20 text-foreground border border-border/50;
+  }
+  
+  /* Glow Effects */
+  .shadow-glow-sm {
+    @apply shadow-[0_0_15px_hsl(var(--color-primary)_/_0.15)];
+  }
+  
+  .shadow-glow-md {
+    @apply shadow-[0_0_25px_hsl(var(--color-primary)_/_0.25)];
+  }
+  
+  .shadow-glow-navbar {
+    box-shadow: 0 0 0px rgba(209, 240, 25, 0.2),
+                0 0 0px rgba(209, 240, 25, 0.15),
+                0 0 15px rgba(209, 240, 25, 0.1);
+  }
+  
+  /* Glowing Border Animation */
+  .glow-border-animation {
+    border-radius: 1.5rem;
+    position: relative;
+    padding: 4px;
+    background: linear-gradient(
+      90deg,
+      rgba(244, 67, 54, 0.5),
+      rgba(255, 145, 0, 0.5),
+      rgba(244, 67, 54, 0.5)
+    );
+    background-size: 200% 200%;
+    box-shadow: 0 0 20px rgba(244, 67, 54, 0.4);
+    animation: glowBorderAnimation 8s linear infinite;
+  }
+  
+  @keyframes glowBorderAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Swap Arrow */
+  .swap-arrow {
+    @apply h-10 w-10 p-2 rounded-xl bg-background-light border border-border flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-colors cursor-pointer;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+} 
