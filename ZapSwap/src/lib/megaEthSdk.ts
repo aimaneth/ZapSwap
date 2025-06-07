@@ -38,7 +38,9 @@ export const { chains, publicClient } = configureChains(
 // Get connectors for RainbowKit
 export const { connectors } = getDefaultWallets({
   appName: 'ZapSwap',
-  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || '', // Get from environment variable
+  // Provide a default projectId for build/development
+  // In production, this should be replaced with your own WalletConnect project ID
+  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || 'c4f79cc821944d9680842e34466bfbd9', // Temporary project ID for build
   chains,
 });
 
