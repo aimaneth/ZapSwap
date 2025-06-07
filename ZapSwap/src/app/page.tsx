@@ -272,6 +272,6 @@ export default function Home() {
 const CardDecorator = ({ children }: { children: ReactNode }) => (
   <div aria-hidden className="relative mx-auto size-36 [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]">
     <div className="absolute inset-0 [--border:white] bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:24px_24px] opacity-10"/>
-    <div className="bg-background/80 backdrop-blur-sm absolute inset-0 m-auto flex size-12 items-center justify-center border-t border-l border-white/10">{children}</div>
+    <div className="bg-card absolute inset-0 m-auto flex size-12 items-center justify-center border-t border-l border-white/10">{children}</div>
   </div>
 ) 
