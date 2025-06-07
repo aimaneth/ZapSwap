@@ -124,7 +124,7 @@ export default function Home() {
                     href={`/swap?fromToken=${pool.token0.symbol}&toToken=${pool.token1.symbol}`}
                     className="grid grid-cols-12 gap-1 md:gap-4 px-3 md:px-6 py-3 border-b border-border/20 hover:bg-primary/5 transition-colors block cursor-pointer text-gray-200"
                   >
-                    <div className="col-span-4 md:col-span-4 pr-1">
+                    <div className="col-span-4 md:col-span-4 pr-1 flex items-center">
                       <div className="flex items-center">
                         <div className="flex -space-x-1 mr-1 md:mr-3 flex-shrink-0">
                           <div className="token-logo z-10">
@@ -137,9 +137,9 @@ export default function Home() {
                         <span className="font-medium text-[10px] md:text-base truncate">{pool.token0.symbol}/{pool.token1.symbol}</span>
                       </div>
                     </div>
-                    <div className="col-span-3 text-right text-[10px] md:text-base whitespace-nowrap">{pool.tvl}</div>
-                    <div className="col-span-3 md:col-span-3 text-right text-[10px] md:text-base whitespace-nowrap">{pool.volume24h}</div>
-                    <div className="col-span-2 text-right font-medium text-primary text-[10px] md:text-base">{pool.apr}</div>
+                    <div className="col-span-3 text-right text-[10px] md:text-base whitespace-nowrap flex items-center justify-end">{pool.tvl}</div>
+                    <div className="col-span-3 md:col-span-3 text-right text-[10px] md:text-base whitespace-nowrap flex items-center justify-end">{pool.volume24h}</div>
+                    <div className="col-span-2 text-right font-medium text-primary text-[10px] md:text-base flex items-center justify-end">{pool.apr}</div>
                   </Link>
                 ))}
               </div>
